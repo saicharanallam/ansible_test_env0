@@ -1,5 +1,5 @@
 ---
-- name: Fetch data from a public API
+- name: Fetch data from a public API and display it with flair
   hosts: all
   tasks:
     - name: Make a GET request to a public API
@@ -9,11 +9,21 @@
         return_content: yes
       register: api_response
 
-    - name: Save API response to a file
-      copy:
-        content: "{{ api_response.content }}"
-        dest: /tmp/api_response.json
-
-    - name: Display API response in logs
+    - name: Display formatted API response with flair
       debug:
-        msg: "{{ api_response.json }}"
+        msg: |
+          **API Response (JSONPlaceholder)**
+          ============================================
+          Status Code: {{ api_response.status }}
+          ============================================
+          Response Length: {{ api_response.content | length }} bytes
+          ============================================
+          Sample Data:
+          {% for post in api_response.json[:3] %}
+          - Post ID: {{ post.id }} | Title: {{ post.title }}
+          {% endfor %}
+          ============================================
+          Total Posts: {{ api_response.json | length }}
+          ============================================
+          [Note: Logs are formatted with flair for visibility]
+      verbosity: 1
