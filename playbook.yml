@@ -9,7 +9,20 @@
         method: GET
         return_content: yes
       register: api_response
+      when: ansible_check_mode is not defined or not ansible_check_mode
 
+    # Set a mock response for check mode
+    - name: Set mock API response for check mode
+      set_fact:
+        api_response: 
+          json: 
+            - title: "Mock Post 1"
+              body: "This is a mock post for check mode"
+            - title: "Mock Post 2"
+              body: "Another mock post"
+      when: ansible_check_mode is defined and ansible_check_mode
+
+    # Display API response in logs
     - name: Display API response in logs
       debug:
         msg: "{{ api_response.json }}"
