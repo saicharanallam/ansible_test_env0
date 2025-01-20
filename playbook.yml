@@ -1,0 +1,19 @@
+---
+- name: Fetch data from a public API
+  hosts: all
+  tasks:
+    - name: Make a GET request to a public API
+      uri:
+        url: https://jsonplaceholder.typicode.com/posts
+        method: GET
+        return_content: yes
+      register: api_response
+
+    - name: Save API response to a file
+      copy:
+        content: "{{ api_response.content }}"
+        dest: /tmp/api_response.json
+
+    - name: Display API response in logs
+      debug:
+        msg: "{{ api_response.json }}"
