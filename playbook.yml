@@ -1,7 +1,8 @@
 ---
-- name: Fetch data from a public API and display it
-  hosts: all
+- name: Fetch data from a public API and display a random message
+  hosts: localhost
   tasks:
+    # Fetch data from the public API
     - name: Make a GET request to a public API
       uri:
         url: https://jsonplaceholder.typicode.com/posts
@@ -12,3 +13,22 @@
     - name: Display API response in logs
       debug:
         msg: "{{ api_response.json }}"
+
+    # Define a list of random messages
+    - name: Define a list of random messages
+      set_fact:
+        messages:
+          - "Hello, world!"
+          - "Ansible is awesome!"
+          - "Debugging rocks!"
+          - "Random message!"
+      
+    # Choose a random message
+    - name: Choose a random message
+      set_fact:
+        random_message: "{{ messages | random }}"
+
+    # Display the random message
+    - name: Display the random message
+      debug:
+        msg: "{{ random_message }}"
