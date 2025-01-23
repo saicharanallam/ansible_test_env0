@@ -1,12 +1,12 @@
 environments:
-  task_1:
-    name: 'Task 1'
-    templateName: 'test_workflow'
   task_2:
     name: 'Task 2'
+    templateName: 'test_workflow'
+  task_1:
+    name: 'Task 1'
     vcs:
       type: 'ansible'
       ansibleVersion: '3.0.0'
       repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
-      path: 'task_2'
+      path: 'task_1'
 
