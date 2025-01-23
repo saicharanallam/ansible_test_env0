@@ -1,0 +1,13 @@
+environments:
+  task_1:
+    name: 'Task 1'
+    vcs:
+      type: 'ansible'
+      repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
+      path: 'task_1'
+  task_2:
+    name: 'Task 2'
+    vcs:
+      type: 'ansible'
+      repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
+      path: 'task_2'
