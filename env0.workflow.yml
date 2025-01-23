@@ -1,11 +1,4 @@
 environments:
-  task_2:
-    name: 'Task 2'
-    vcs:
-      type: 'ansible'
-      ansibleVersion: '3.0.0'
-      repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
-      path: 'task_2'
   task_1:
     name: 'Task 1'
     vcs:
@@ -13,4 +6,17 @@ environments:
       ansibleVersion: '3.0.0'
       repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
       path: 'task_1'
-
+  task_2:
+    name: 'Task 2'
+    vcs:
+      type: 'ansible'
+      ansibleVersion: '3.0.0'
+      repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
+      path: 'task_2'
+  task_3:
+    name: 'Task 3'
+    vcs:
+      type: 'terraform'
+      terraformVersion: '1.5.7'
+      repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
+      path: 'task_3'
