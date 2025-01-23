@@ -31,10 +31,8 @@
     - name: Define a list of random messages
       set_fact:
         messages:
-          - "Hello, world!"
-          - "Ansible is awesome!"
-          - "Debugging rocks!"
-          - "Random message!"
+          - "First message, Hello, world!"
+          - "First message, Random message!"
       
     # Choose a random message
     - name: Choose a random message
