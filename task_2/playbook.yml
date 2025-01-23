@@ -1,5 +1,5 @@
 ---
-- name: Fetch data from a public API and display a random message
+- name: Fetch data from a public API and display a random message Second time
   hosts: localhost
   tasks:
     # Fetch data from the public API
@@ -31,10 +31,10 @@
     - name: Define a list of random messages
       set_fact:
         messages:
-          - "Hello, world!"
-          - "Ansible is awesome!"
-          - "Debugging rocks!"
-          - "Random message!"
+          - "Second message, Hello, world!"
+          - "Second message, Ansible is awesome!"
+          - "Second message, Debugging rocks!"
+          - "Second message, Random message!"
       
     # Choose a random message
     - name: Choose a random message
