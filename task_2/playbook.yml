@@ -1,0 +1,47 @@
+---
+- name: Fetch data from a public API and display a random message
+  hosts: localhost
+  tasks:
+    # Fetch data from the public API
+    - name: Make a GET request to a public API
+      uri:
+        url: https://jsonplaceholder.typicode.com/posts
+        method: GET
+        return_content: yes
+      register: api_response
+      when: ansible_check_mode is not defined or not ansible_check_mode
+
+    # Set a mock response for check mode
+    - name: Set mock API response for check mode
+      set_fact:
+        api_response: 
+          json: 
+            - title: "Mock Post 1"
+              body: "This is a mock post for check mode"
+            - title: "Mock Post 2"
+              body: "Another mock post"
+      when: ansible_check_mode is defined and ansible_check_mode
+
+    # Display API response in logs
+    - name: Display API response in logs
+      debug:
+        msg: "{{ api_response.json }}"
+
+    # Define a list of random messages
+    - name: Define a list of random messages
+      set_fact:
+        messages:
+          - "Hello, world!"
+          - "Ansible is awesome!"
+          - "Debugging rocks!"
+          - "Random message!"
+      
+    # Choose a random message
+    - name: Choose a random message
+      set_fact:
+        random_message: "{{ messages | random }}"
+
+    # Display the random message
+    - name: Display the random message
+      debug:
+        msg: "{{ random_message }}"
