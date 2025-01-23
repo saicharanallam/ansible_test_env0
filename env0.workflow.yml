@@ -17,6 +17,6 @@ environments:
     name: 'Task 3'
     vcs:
       type: 'terraform'
-      ansibleVersion: '1.5.7'
+      terraformVersion: '1.5.7'
       repository: 'https://github.com/saicharanallam/ansible_test_env0.git'
       path: 'task_3'
