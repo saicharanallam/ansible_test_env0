@@ -1,4 +1,8 @@
+# main.tf
+provider "null" {}
+
 variable "name" {
+  type    = string
   default = "World"
 }
 
